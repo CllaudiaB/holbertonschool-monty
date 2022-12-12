@@ -8,6 +8,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
+
+int value;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,18 +42,24 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
 /**
- * struct error - prints an error message to stderr
- * @out: code of the error
- * @error_function: corresponding function to handle the error
+ * struct buffer - buffer of the user input
+ * @fd: File descriptor
+ * @line: buffer of getline
+ * Description: Handles the fd and buffer of user input
  */
-
-typedef struct error
+typedef struct buffer
 {
-	int out;
-	void (*error_function)(void);
-} error_t;
+	FILE *fd;
+	char *line;
+} buffer_t;
 
+
+
+int opc_function(stack_t **stack, char *argument, char *data, unsigned int linecount);
+void execute_cmd(char *argv);
+void free_dlistint(stack_t *head);
 stack_t *new_Node(int n);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int n);
