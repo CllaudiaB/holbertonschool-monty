@@ -18,7 +18,6 @@ stack_t *new_Node(int n)
 	new->n = n;
 	new->next = NULL;
 	new->prev = NULL;
-
 	return (new);
 }
 
@@ -38,6 +37,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (*stack != NULL)
 		(*stack)->prev = new;
 	*stack = new;
+	fprintf(stderr, "finished executing push function\n");
 }
 
 /**
@@ -58,4 +58,5 @@ void _pall(stack_t **stack, unsigned int n)
 		dprintf(STDOUT_FILENO, "%d\n", current->n);
 		current = current->next;
 	}
+	fprintf(stderr, "finished executing _pall function\n");
 }

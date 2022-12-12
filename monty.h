@@ -59,6 +59,7 @@ typedef struct buffer
 
 int opc_function(stack_t **stack, char *argument, char *data, unsigned int linecount);
 void execute_cmd(char *argv);
+void handle_command(char *argv);
 void free_dlistint(stack_t *head);
 stack_t *new_Node(int n);
 void _push(stack_t **stack, unsigned int line_number);
