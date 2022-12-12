@@ -1,5 +1,6 @@
 #include "monty.h"
 
+int value;
 /**
  * new_Node - creates a new node
  * @n: data of the new node
@@ -24,7 +25,7 @@ stack_t *new_Node(int n)
 /**
  * _push - creates a new node at the beginning of stack
  * @stack: double pointer to the stack
- * @line_number: is value
+ * @line_number: line number of the command
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
@@ -37,13 +38,12 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (*stack != NULL)
 		(*stack)->prev = new;
 	*stack = new;
-	fprintf(stderr, "finished executing push function\n");
 }
 
 /**
  * _pall - print all the values of the stack
  * @stack: double pointer to the stack
- * @n: is value
+ * @n: data to print
  * Return: nothing
  */
 void _pall(stack_t **stack, unsigned int n)
@@ -58,5 +58,4 @@ void _pall(stack_t **stack, unsigned int n)
 		dprintf(STDOUT_FILENO, "%d\n", current->n);
 		current = current->next;
 	}
-	fprintf(stderr, "finished executing _pall function\n");
 }

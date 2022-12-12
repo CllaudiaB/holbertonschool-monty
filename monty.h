@@ -4,13 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
+#include <errno.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-#include <ctype.h>
-
-int value;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -19,7 +17,7 @@ int value;
  * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct stack_s
 {
@@ -34,7 +32,7 @@ typedef struct stack_s
  * @f: function to handle the opcode
  *
  * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct instruction_s
 {
@@ -42,12 +40,12 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
 /**
- * struct buffer - buffer of the user input
+ * struct glob_s - global and its funcs
  * @fd: File descriptor
- * @line: buffer of getline
- * Description: Handles the fd and buffer of user input
+ * @line: Line to getline
+ *
+ * Description: To handle the file and getline
  */
 typedef struct buffer
 {
@@ -55,13 +53,35 @@ typedef struct buffer
 	char *line;
 } buffer_t;
 
+extern buffer_t buffer;
+extern int value;
 
-
-int opc_function(stack_t **stack, char *argument, char *data, unsigned int linecount);
 void execute_cmd(char *argv);
-void handle_command(char *argv);
-void free_dlistint(stack_t *head);
-stack_t *new_Node(int n);
+
+int get_opc(stack_t **stack, char *arg, char *item, int count);
+
 void _push(stack_t **stack, unsigned int line_number);
-void _pall(stack_t **stack, unsigned int n);
+void _pall(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
+void _swap(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void _sub(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
+void _pchar(stack_t **stack, unsigned int line_number);
+void _pstr(stack_t **stack, unsigned int line_number);
+void free_dlistint(stack_t *stack);
+void cleanStack(stack_t **stack);
+
+/*Help*/
+int _isdigit(char *c);
+stack_t *new_Node(int n);
+
+/* handle_errors */
+void push_error(FILE *fd, char *line, stack_t *stack, int count);
+void ins_error(FILE *fd, char *line, stack_t *stack, char *count, int item);
+
 #endif
