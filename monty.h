@@ -51,4 +51,7 @@ typedef struct error
 	void (*error_function)(void);
 } error_t;
 
+stack_t *new_Node(int n);
+void _push(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int n);
 #endif
