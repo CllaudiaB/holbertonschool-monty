@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
  */
 void execute_cmd(char *argv)
 {
-	int linecount = 0; /*result = 0;*/
+	int linecount = 0, result = 0;
 	size_t bufsize = 0;
 	char *arguments = NULL, *data = NULL;
 	stack_t *stack = NULL;
@@ -45,11 +45,11 @@ void execute_cmd(char *argv)
 			/*else if (*arguments == '#')
 			  continue;*/
 			data = strtok(NULL, " \n\t\r");
-			/*result =*/ get_opc(&stack, arguments, data, linecount);
-/*			if (result == 1)
-				push_error(global.fd, global.line, stack, linecount);
+			result = get_opc(&stack, arguments, data, linecount);
+			if (result == 1)
+				push_error(buffer.fd, buffer.line, stack, linecount);
 			else if (result == 2)
-			ins_error(global.fd, global.line, stack, arguments, linecount);*/
+			ins_error(buffer.fd, buffer.line, stack, arguments, linecount);
 		}
 		free(buffer.line);
 		free_dlistint(stack);
