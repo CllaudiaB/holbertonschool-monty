@@ -6,16 +6,16 @@
  **/
 int _isdigit(char *c)
 {
-	char *aux = c;
+	char *temp = c;
 
 	if (c == NULL)
 		return (0);
-	if (*aux == '-')
-		aux++;
+	if (*temp == '-')
+		temp++;
 
-	for (; *aux != '\0'; aux++)
+	for (; *temp != '\0'; temp++)
 	{
-		if ((*aux < '0' || *aux > '9'))
+		if ((*temp < '0' || *temp > '9'))
 		{
 			return (0);
 		}

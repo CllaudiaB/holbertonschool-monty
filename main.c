@@ -25,9 +25,9 @@ int main(int argc, char *argv[])
  */
 void execute_cmd(char *argv)
 {
-	int count = 0, result = 0;
+	int linecount = 0; /*result = 0;*/
 	size_t bufsize = 0;
-	char *arguments = NULL, *item = NULL;
+	char *arguments = NULL, *data = NULL;
 	stack_t *stack = NULL;
 
 	buffer.fd = fopen(argv, "r");
@@ -35,21 +35,21 @@ void execute_cmd(char *argv)
 	{
 		while (getline(&buffer.line, &bufsize, buffer.fd) != -1)
 		{
-			count++;
+			linecount++;
 			arguments = strtok(buffer.line, " \n\t\r");
 			if (arguments == NULL)
 			{
 				free(arguments);
 				continue;
 			}
-			else if (*arguments == '#')
-				continue;
-			item = strtok(NULL, " \n\t\r");
-			result = get_opc(&stack, arguments, item, count);
+			/*else if (*arguments == '#')
+			  continue;*/
+			data = strtok(NULL, " \n\t\r");
+			/*result =*/ get_opc(&stack, arguments, data, linecount);
 /*			if (result == 1)
-				push_error(global.fd, global.line, stack, count);
+				push_error(global.fd, global.line, stack, linecount);
 			else if (result == 2)
-			ins_error(global.fd, global.line, stack, arguments, count);*/
+			ins_error(global.fd, global.line, stack, arguments, linecount);*/
 		}
 		free(buffer.line);
 		free_dlistint(stack);
@@ -69,7 +69,7 @@ void execute_cmd(char *argv)
  * @count: is a line command
  * Return: nothing
  */
-int get_opc(stack_t **stack, char *arg, char *item, int count)
+int get_opc(stack_t **stack, char *arg, char *data, int linecount)
 {
 	int i = 0;
 
@@ -85,12 +85,12 @@ int get_opc(stack_t **stack, char *arg, char *item, int count)
 		{
 			if (!strcmp(arg, "push"))
 			{
-				if (_isdigit(item) == 1)
-					value = atoi(item);
+				if (_isdigit(data) == 1)
+					value = atoi(data);
 				else
 					return (1);
 			}
-			op[i].f(stack, (unsigned int)count);
+			op[i].f(stack, (unsigned int)linecount);
 			break;
 		}
 		i++;
