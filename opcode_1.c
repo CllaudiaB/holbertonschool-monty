@@ -45,5 +45,4 @@ void _nop(stack_t **stack, unsigned int n)
 {
 	(void)stack;
 	(void)n;
-	return;
 }
