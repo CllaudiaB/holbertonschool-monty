@@ -4,6 +4,7 @@
  * _swap - swaps the top two elements of the stack
  * @stack: doubly linked list storing the data
  * @n: line of the command
+ * Return: void
  */
 
 void _swap(stack_t **stack, unsigned int n)
@@ -31,4 +32,18 @@ void _swap(stack_t **stack, unsigned int n)
 	tempdata = temp->n;
 	temp->n = headdata;
 	head->n = tempdata;
+}
+
+/**
+ * _nop - does not do anything
+ * @stack: stack storing data
+ * @l: line of the command
+ * Return: void
+ */
+
+void _nop(stack_t **stack, unsigned int n)
+{
+	(void)stack;
+	(void)n;
+	return;
 }
