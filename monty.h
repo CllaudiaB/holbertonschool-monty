@@ -41,7 +41,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * struct glob_s - global and its funcs
+ * struct buffer - structure to store the buffer
  * @fd: File descriptor
  * @line: Line to getline
  *
@@ -66,15 +66,8 @@ void _pint(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
-void _sub(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
-void _div(stack_t **stack, unsigned int line_number);
-void _mul(stack_t **stack, unsigned int line_number);
-void _mod(stack_t **stack, unsigned int line_number);
-void _pchar(stack_t **stack, unsigned int line_number);
-void _pstr(stack_t **stack, unsigned int line_number);
 void free_dlistint(stack_t *stack);
-void cleanStack(stack_t **stack);
 
 /*Help*/
 int _isdigit(char *c);

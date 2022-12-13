@@ -42,8 +42,6 @@ void execute_cmd(char *argv)
 				free(arguments);
 				continue;
 			}
-			/*else if (*arguments == '#')
-			  continue;*/
 			data = strtok(NULL, " \n\t\r");
 			result = get_opc(&stack, arguments, data, linecount);
 			if (result == 1)
@@ -64,9 +62,9 @@ void execute_cmd(char *argv)
 /**
  * get_opc - function to handle the opcode
  * @stack: is a stack or queue
- * @arg: is a parameter
- * @item: is a parameter
- * @count: is a line command
+ * @arg: command entered by user
+ * @data: value enterd by user
+ * @linecount: line being processed
  * Return: nothing
  */
 int get_opc(stack_t **stack, char *arg, char *data, int linecount)

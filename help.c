@@ -22,20 +22,3 @@ int _isdigit(char *c)
 	}
 	return (1);
 }
-
-/**
- * cleanStack - Frees mallocs and close de files
- * @stack: Stack
- */
-void cleanStack(stack_t **stack)
-{
-	stack_t *current = *stack;
-
-	for (; current; current = *stack)
-	{
-		*stack = (*stack)->next;
-		free(current);
-	}
-	fclose(buffer.fd);
-	free(buffer.line);
-}

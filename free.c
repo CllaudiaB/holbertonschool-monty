@@ -1,9 +1,8 @@
 #include "monty.h"
 
 /**
- * freedoublep - frees a double pointer
- * Description: frees a double pointer
- * @p: double pointer to free
+ * free_dlistint - frees a double linked list
+ * @head: pointer to head of double linked list
  * Return: void
  */
 
