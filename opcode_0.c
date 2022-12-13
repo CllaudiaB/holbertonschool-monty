@@ -74,7 +74,7 @@ void _pint(stack_t **stack, unsigned int n)
 	current = *stack;
 	if (current == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty", n);
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", n);
 		exit(EXIT_FAILURE);
 	}
 
