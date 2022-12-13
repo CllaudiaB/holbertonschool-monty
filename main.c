@@ -74,6 +74,7 @@ int get_opc(stack_t **stack, char *arg, char *data, int linecount)
 	instruction_t op[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pint", _pint},
 		{NULL, NULL}
 	};
 
